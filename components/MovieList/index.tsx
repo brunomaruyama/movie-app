@@ -1,18 +1,11 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-
-export interface MovieType {
-  id: number;
-  title: string;
-  poster_path: string;
-  overview: string;
-  vote_average: number;
-}
+import MovieCard from "../MovieCard";
+import { Movie } from "@/types/movie";
 
 export default function MovieList() {
-  const [movies, setMovies] = useState<MovieType[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     getMovies();
@@ -33,18 +26,9 @@ export default function MovieList() {
   };
 
   return (
-    <ul className="">
+    <ul className="grid grid-cols-6 gap-4 w-full">
       {movies.map((movie) => (
-        <li className="text-white" key={movie.id}>
-          <p>{movie.title}</p>
-          <p>{movie.overview}</p>
-          <Image
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            alt={movie.title}
-            width={480}
-            height={640}
-          ></Image>
-        </li>
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </ul>
   );
