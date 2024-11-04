@@ -26,7 +26,7 @@ export default function MovieList() {
   };
 
   return (
-    <ul className="grid grid-cols-6 gap-4 w-full">
+    <ul className="p-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-full">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
