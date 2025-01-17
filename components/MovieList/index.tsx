@@ -17,10 +17,6 @@ export default function MovieList() {
     const url = process.env.NEXT_PUBLIC_TMDB_URL;
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-    // Log the URL and API key to ensure they are defined
-    console.log("TMDB_URL:", url);
-    console.log("TMDB_API_KEY:", apiKey);
-
     if (!url || !apiKey) {
       setError("API URL or API key is not defined");
       setLoading(false);
